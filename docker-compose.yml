@@ -1,0 +1,22 @@
+version: '3'
+services:
+  kinesalite:
+    build:
+      context: ./kinesalite
+      dockerfile: Dockerfile
+    # volumes:
+    #   - ./api/logs:/var/logs
+    #   - ./api/app:/var/www/app
+    ports:
+      - "4567:4567"
+    #   - "8380:80"
+    # environment:
+    #   - "TZ=Asia/Tokyo"
+    # command: chmod go+w /tmp/wsdl_cache.db
+    # env_file: .env
+    # depends_on:
+    #   - search
+    #   - redis
+    #   - db
+    #   - mail
+
