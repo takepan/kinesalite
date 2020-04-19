@@ -1,3 +1,7 @@
+# original
+https://blog.ruanbekker.com/blog/2019/06/22/play-with-kinesis-data-streams-for-free/
+
+# with docker-compose
 docker-compose build
 docker-compose up -d
 
@@ -180,37 +184,8 @@ print("Finished at {}".format(time.strftime("%H:%m:%S")))
 Our Kinesis Local Consumer:
 This will read 5 records at a time from our stream, you will notice if you run them on the same time it will only read one at a time as the producer only writes one per second.
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
+
+```python3
 import boto3
 import json
 import time
@@ -244,51 +219,24 @@ while True:
     time.sleep(0.75)
 Demo Time!
 Now that we have our producer.py and consumer.py, lets test this out.
+```
 
 Start the server:
 
-1
-2
+```
 $ docker run -it -p 4567:4567 ruanbekker/kinesis-local:latest
 Listening at http://:::4567
 Run the Producer from your Python Environment:
+```
 
-1
-2
-3
+```
 $ python producer.py
 Starting at 00:06:16
 Finished at 00:06:42
 Run the Consumer from your Python Environment:
+```
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
+```
 $ python consumer.py
 Starting Consuming at 00:06:31
 {u'age': 30, u'number': 1, u'name': u'pete'}
@@ -317,4 +265,4 @@ Starting Consuming at 00:06:31
 {u'age': 38, u'number': 24, u'name': u'pete'}
 {u'age': 40, u'number': 25, u'name': u'frank'}
 Finshed Consuming at 00:06:35
-
+```
