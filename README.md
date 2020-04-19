@@ -8,6 +8,7 @@ docker-compose exec kinesalite bash
 
 
 $ python3
+```
 >>> import boto3, json  
 >>> client = boto3.Session(  
     region_name='eu-west-1').client('kinesis', aws_access_key_id='', aws_secret_access_key='', endpoint_url='http://localhost:4567'  
@@ -34,6 +35,7 @@ $ python3
 ...  
 {u'name': u'ruan'}
 >>> client.delete_stream(StreamName='mystream')
+```
 
 Our Kinesis Producer
 The following will create a Kinesis Local Stream and Write 25 JSON Documents to our stream:
