@@ -6,9 +6,9 @@ RUN apt install vim -y
 RUN apt install python3-pip -y
 RUN apt-get clean
 
-WORKDIR /usr/local/src
-
 ADD . /usr/local/src
+
+WORKDIR /usr/local/src
 
 RUN pip3 install -r requirements.txt
 

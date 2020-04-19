@@ -4,8 +4,8 @@ services:
     build:
       context: ./kinesalite
       dockerfile: Dockerfile
-    # volumes:
-    #   - ./api/logs:/var/logs
+    volumes:
+      - ./src:/usr/local/src
     #   - ./api/app:/var/www/app
     ports:
       - "4567:4567"
