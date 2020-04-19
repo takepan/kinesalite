@@ -1,3 +1,7 @@
+# original
+https://blog.ruanbekker.com/blog/2019/06/22/play-with-kinesis-data-streams-for-free/
+
+# with docker-compose
 docker-compose build
 docker-compose up -d
 
