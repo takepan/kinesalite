@@ -2,10 +2,11 @@
 https://blog.ruanbekker.com/blog/2019/06/22/play-with-kinesis-data-streams-for-free/
 
 # with docker-compose
+```
 docker-compose build  
 docker-compose up -d  
 docker-compose exec kinesalite bash
-
+```
 
 $ python3
 ```python3
@@ -109,16 +110,23 @@ response = client.get_shard_iterator(
 
 shard_iterator = response['ShardIterator']
 
+print("Starting at {}".format(time.strftime("%H:%m:%S")))
+
 while True:
     response = client.get_records(ShardIterator=shard_iterator, Limit=5)
     shard_iterator = response['NextShardIterator']
+    if not response['Records']:
+        break
     for record in response['Records']:
         if 'Data' in record and len(record['Data']) > 0:
-            print(json.loads(record['Data']))
+            print(json.loads(record['Data'].decode("UTF-8")))
     time.sleep(0.75)
-Demo Time!
-Now that we have our producer.py and consumer.py, lets test this out.
+
+print("Finished at {}".format(time.strftime("%H:%m:%S")))
 ```
+
+Demo Time!  
+Now that we have our producer.py and consumer.py, lets test this out.
 
 ```
 $ python3 producer.py
