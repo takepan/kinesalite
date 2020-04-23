@@ -6,17 +6,21 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./src:/usr/local/src
-    #   - ./api/app:/var/www/app
     ports:
       - "4567:4567"
-    #   - "8380:80"
-    # environment:
-    #   - "TZ=Asia/Tokyo"
-    # command: chmod go+w /tmp/wsdl_cache.db
-    # env_file: .env
-    # depends_on:
-    #   - search
-    #   - redis
-    #   - db
-    #   - mail
+  dynamodb:
+    image: amazon/dynamodb-local
+    command: -jar DynamoDBLocal.jar -dbPath /data -sharedDb
+    volumes:
+      - ./dynamodb/local/data:/data
+    ports:
+      - 8000:8000
+  ddb-admin:
+    image: aaronshaf/dynamodb-admin
+    environment:
+      DYNAMO_ENDPOINT: http://dynamodb:8000
+    links:
+      - dynamodb
+    ports:
+      - 8001:8001
 
